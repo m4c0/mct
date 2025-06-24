@@ -27,6 +27,9 @@ extern "C" {
 ///
 /// This API is suited for same-machine comparisons, like checking if a file was
 /// modified after reading it.
+///
+/// Note: this has millisecond precision on Windows and nanosecond precision
+/// otherwise
 extern uint64_t mct_stat_mtime(const char *filename);
 
 #ifdef MCT_STAT_IMPLEMENTATION
