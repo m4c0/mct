@@ -12,7 +12,9 @@
 #ifndef MCT_SYSCALL_H
 #define MCT_SYSCALL_H
 
+// TODO: find ways of only including those in implementation
 #include <stdio.h>
+#include <time.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -77,7 +79,7 @@ FILE * mct_syscall_fopen(const char * name, const char * mode) {
   FILE * res;
   return (0 == fopen_s(&res, name, mode)) ? res : NULL;
 #else
-  return fopen(name);
+  return fopen(name, mode);
 #endif
 }
 
