@@ -66,7 +66,7 @@ int mct_syscall_chdir(const char * path) {
 char * mct_syscall_dupenv(const char * name) {
 #ifdef _WIN32
   char buf[1024];
-  return (0 == GetEnvironmentVariable(name, buf, sizeof(buf))) ? NULL : strdup(buf);
+  return (0 == GetEnvironmentVariable(name, buf, sizeof(buf))) ? NULL : _strdup(buf);
 #else
   const char * e = getenv(name);
   return e ? strdup(e) : NULL;
