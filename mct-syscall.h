@@ -108,11 +108,8 @@ const char * mct_syscall_link(const char * src, const char * dst) {
   static char buf[1024];
   FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), LOCALE_USER_DEFAULT, buf, sizeof(buf), NULL);
   return buf;
-#elif __APPLE__
-  // TODO: confirm if this works on iOS
-  if (0 == clonefile(src, dst, 0)) return NULL;
-  return strerror(errno);
 #else
+  // TODO: confirm if this works on iOS
   if (link(src, dst) == 0) return NULL;
   return strerror(errno);
 #endif
